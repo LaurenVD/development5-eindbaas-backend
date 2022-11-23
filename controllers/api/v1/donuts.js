@@ -33,5 +33,20 @@ const create = (req, res) => {
 })
 }
 
+//get donut by id
+const getId = (req, res) => {
+    const id = req.params.id
+    res.json({
+        "status": "success",
+        "message": "GETTING donut with id ${id}",
+        "data": {
+            "donut": {
+                "name": "Glazed",
+            }
+        }
+    })
+}
+
 module.exports.getAll = getAll
 module.exports.create = create
+module.exports.getId = getId

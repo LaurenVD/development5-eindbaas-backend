@@ -8,4 +8,6 @@ router.get('/', donutController.getAll)
 
 router.post('/', donutController.create)
 
+router.get('/:id', donutController.getId)
+
 module.exports = router;
