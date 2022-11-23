@@ -1,7 +1,24 @@
 //donuts
 
 const getAll = (req, res) => {
-    res.send("getAll is working")
+    res.json({
+        "status": "success",
+        "message": "All donuts",
+        "data": {
+            "donuts": [
+                {
+                    "id": 1,
+                    "name": "Glazed",
+
+                },
+                {
+                    "id": 2,
+                    "name": "Chocolate",
+                
+                }]
+        }
+
+    })
 }
 
 module.exports.getAll = getAll
