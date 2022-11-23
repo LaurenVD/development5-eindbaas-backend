@@ -1,5 +1,4 @@
 //donuts
-
 const getAll = (req, res) => {
     res.json({
         "status": "success",
@@ -21,4 +20,18 @@ const getAll = (req, res) => {
     })
 }
 
+//create new donut
+const create = (req, res) => {
+    res.json({
+        "status": "success",
+        "message": "CREATING donut",
+        "data": {
+            "donut": {
+                "name": "Strawberry"
+        }
+    }
+})
+}
+
 module.exports.getAll = getAll
+module.exports.create = create
