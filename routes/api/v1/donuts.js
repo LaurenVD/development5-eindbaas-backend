@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+//donut route
 
-/* GET routes for Donuts. */
-router.get('/', (req, res, next) => {
-  res.send('get the donuts ready');
-});
+const express = require('express');
+const router = express.Router();
+const donutController = require('../../../controllers/api/v1/donuts');
+
+router.get('/', donutController.getAll)
 
 module.exports = router;
