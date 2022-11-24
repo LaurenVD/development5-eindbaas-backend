@@ -27,6 +27,10 @@ const getAll = (req, res ) => {
 //create new donut
 const create = (req, res ) => {
     let name = req.body.name; // $_POST["name"]
+    //post the dough
+    let dough = req.body.dough;
+    //post the glaze
+    let glaze = req.body.glaze;
     let donut = new Donut();
     donut.name = name;
     donut.save((err, donut) => {
@@ -43,6 +47,8 @@ const create = (req, res ) => {
                     status: "success",
                     data: {
                         donut: name,
+                        donut: dough,
+                        donut: glaze
                     },
                 };
                 res.json(result);
