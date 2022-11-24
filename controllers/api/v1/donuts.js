@@ -79,6 +79,30 @@ const getId = (req, res) => {
     });
 };
 
+//delete donut by id
+const deleteId = (req, res) => {
+    let id = req.params.id;
+    Donut.findByIdAndDelete(id, (err, donut) => {
+        if(err) {
+            let result = {
+                status: 'error',
+                message: 'Error deleting donut',
+            };
+            res.json(result);
+        }
+        else {
+            let result = {
+                status: 'success deleting donut',
+                data: {
+                    donut: donut,
+                },
+            };
+            res.json(result);
+        }
+    });
+};
+
 module.exports.getAll = getAll
 module.exports.create = create
 module.exports.getId = getId
+module.exports.deleteId = deleteId

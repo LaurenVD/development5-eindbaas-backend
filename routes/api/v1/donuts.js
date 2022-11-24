@@ -10,4 +10,6 @@ router.post('/', donutController.create)
 
 router.get('/:id', donutController.getId)
 
+router.delete('/:id', donutController.deleteId)
+
 module.exports = router;
