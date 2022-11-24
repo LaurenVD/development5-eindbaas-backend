@@ -1,36 +1,59 @@
 //donuts
-const getAll = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "All donuts",
-        "data": {
-            "donuts": [
-                {
-                    "id": 1,
-                    "name": "Glazed",
+// require donut model
+const Donut = require('../../../models/Donut');
 
-                },
-                {
-                    "id": 2,
-                    "name": "Chocolate",
-                
-                }]
+
+const getAll = (req, res ) => {
+    let donuts = Donut.find({}, (err, donuts) => {
+        if(err) {
+            let result = {
+                status: 'error',
+                message: 'Error getting toppings',
+            };
+            res.json(result);
         }
-
-    })
-}
+        else {
+            let result = {
+                status: 'success',
+                data: {
+                    donuts: donuts,
+                },
+            };
+            res.json(result);
+        }
+    });
+};
 
 //create new donut
-const create = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "CREATING donut",
-        "data": {
-            "donut": {
-                "name": "Strawberry"
-        }
-    }
-})
+const create = (req, res ) => {
+    let name = req.body.name; // $_POST["name"]
+    //post the dough
+    let dough = req.body.dough;
+    //post the glaze
+    let glaze = req.body.glaze;
+    let donut = new Donut();
+    donut.name = name;
+    donut.save((err, donut) => {
+        if(err) {
+            console.log(err);
+            let result = {
+                status: "error",
+                message: "Oops, couldn't save donut",
+            };
+            res.json(result);
+            }
+            else {
+                let result = {
+                    status: "success",
+                    data: {
+                        donut: name,
+                        donut: dough,
+                        donut: glaze
+                    },
+                };
+                res.json(result);
+            }
+        });
 }
 
 //get donut by id
