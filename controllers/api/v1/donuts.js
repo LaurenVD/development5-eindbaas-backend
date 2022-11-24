@@ -58,17 +58,26 @@ const create = (req, res ) => {
 
 //get donut by id
 const getId = (req, res) => {
-    const id = req.params.id
-    res.json({
-        "status": "success",
-        "message": "GETTING donut with id ${id}",
-        "data": {
-            "donut": {
-                "name": "Glazed",
-            }
+    let id = req.params.id;
+    Donut.findById(id, (err, donut) => {
+        if(err) {
+            let result = {
+                status: 'error',
+                message: 'Error getting donut',
+            };
+            res.json(result);
         }
-    })
-}
+        else {
+            let result = {
+                status: 'success',
+                data: {
+                    donut: donut,
+                },
+            };
+            res.json(result);
+        }
+    });
+};
 
 module.exports.getAll = getAll
 module.exports.create = create
