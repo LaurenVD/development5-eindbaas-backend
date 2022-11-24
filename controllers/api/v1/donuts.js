@@ -1,10 +1,7 @@
 //donuts
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const donutSchema = new Schema({
-    name: String
-});
-const Donut = mongoose.model('Donut', donutSchema);
+// require donut model
+const Donut = require('../../../models/Donut');
+
 
 const getAll = (req, res) => {
     res.json({
