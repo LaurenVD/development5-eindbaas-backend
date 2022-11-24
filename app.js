@@ -10,6 +10,10 @@ const apiV1DonutsRouter = require('./routes/api/v1/donuts');
 
 var app = express();
 
+// add mongoose
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/donutshop', {useNewUrlParser: true});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

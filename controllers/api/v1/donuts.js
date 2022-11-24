@@ -1,4 +1,11 @@
 //donuts
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const donutSchema = new Schema({
+    name: String
+});
+const Donut = mongoose.model('Donut', donutSchema);
+
 const getAll = (req, res) => {
     res.json({
         "status": "success",
@@ -21,16 +28,29 @@ const getAll = (req, res) => {
 }
 
 //create new donut
-const create = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "CREATING donut",
-        "data": {
-            "donut": {
-                "name": "Strawberry"
-        }
-    }
-})
+const create = (req, res ) => {
+    let name = req.body.name; // $_POST["name"]
+    let donut = new Donut();
+    donut.name = name;
+    donut.save((err, donut) => {
+        if(err) {
+            console.log(err);
+            let result = {
+                status: "error",
+                message: "Oops, couldn't save donut",
+            };
+            res.json(result);
+            }
+            else {
+                let result = {
+                    status: "success",
+                    data: {
+                        donut: name,
+                    },
+                };
+                res.json(result);
+            }
+        });
 }
 
 //get donut by id
