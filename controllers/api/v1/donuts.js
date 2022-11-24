@@ -3,26 +3,26 @@
 const Donut = require('../../../models/Donut');
 
 
-const getAll = (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "All donuts",
-        "data": {
-            "donuts": [
-                {
-                    "id": 1,
-                    "name": "Glazed",
-
-                },
-                {
-                    "id": 2,
-                    "name": "Chocolate",
-                
-                }]
+const getAll = (req, res ) => {
+    let donuts = Donut.find({}, (err, donuts) => {
+        if(err) {
+            let result = {
+                status: 'error',
+                message: 'Error getting toppings',
+            };
+            res.json(result);
         }
-
-    })
-}
+        else {
+            let result = {
+                status: 'success',
+                data: {
+                    donuts: donuts,
+                },
+            };
+            res.json(result);
+        }
+    });
+};
 
 //create new donut
 const create = (req, res ) => {

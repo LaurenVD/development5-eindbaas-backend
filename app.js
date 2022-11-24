@@ -1,3 +1,7 @@
+// add mongoose
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/donutshop', {useNewUrlParser: true});
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,10 +13,6 @@ var usersRouter = require('./routes/users');
 const apiV1DonutsRouter = require('./routes/api/v1/donuts');
 
 var app = express();
-
-// add mongoose
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/donutshop', {useNewUrlParser: true});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
