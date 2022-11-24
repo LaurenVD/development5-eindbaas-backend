@@ -7,11 +7,11 @@ const donutSchema = new Schema({
     },
     dough: {
         type: String,
-        required: true
+        required: false
     },
     glaze: {
         type: String,
-        required: true
+        required: false
     }
 });
 const Donut = mongoose.model('Donut', donutSchema);
