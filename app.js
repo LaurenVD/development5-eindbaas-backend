@@ -7,12 +7,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const apiV1DonutsRouter = require('./routes/api/v1/donuts');
 
 var app = express();
+
+// add cors
+app.use(cors({
+  //origin true
+  origin: true,
+  credentials: true,
+  //add methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
