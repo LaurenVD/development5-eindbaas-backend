@@ -33,6 +33,8 @@ const create = (req, res ) => {
     let glaze = req.body.glaze;
     let donut = new Donut();
     donut.name = name;
+    donut.dough = dough;
+    donut.glaze = glaze;
     donut.save((err, donut) => {
         if(err) {
             console.log(err);
