@@ -1,18 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const donutSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    dough: {
-        type: String,
-        required: false
-    },
-    glaze: {
-        type: String,
-        required: false
-    }
+    name: String,
+    dough: String,
+    glaze: String,
 });
 const Donut = mongoose.model('Donut', donutSchema);
 
