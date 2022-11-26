@@ -110,7 +110,33 @@ const deleteId = (req, res) => {
     });
 };
 
+//update donut by id
+const updateId = (req, res) => {
+    let id = req.params.id;
+    let status = req.body.status;
+    Donut.findByIdAndUpdate
+    (id, {status: status}, (err, donut) => {
+        if(err) {
+            let result = {
+                status: 'error',
+                message: 'Error updating donut',
+            };
+            res.json(result);
+        }
+        else {
+            let result = {
+                status: 'success updating donut',
+                data: {
+                    donut: status,
+                },
+            };
+            res.json(result);
+        }
+    });
+};
+
 module.exports.getAll = getAll
 module.exports.create = create
 module.exports.getId = getId
 module.exports.deleteId = deleteId
+module.exports.updateId = updateId

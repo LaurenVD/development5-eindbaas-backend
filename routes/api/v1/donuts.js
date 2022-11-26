@@ -12,4 +12,6 @@ router.get('/:id', donutController.getId)
 
 router.delete('/:id', donutController.deleteId)
 
+router.put('/:id', donutController.updateId)
+
 module.exports = router;
