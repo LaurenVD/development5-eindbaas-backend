@@ -26,12 +26,16 @@ const getAll = (req, res ) => {
 
 //create new donut
 const create = (req, res ) => {
+    let username = req.body.username;
+    let email = req.body.email;
     let name = req.body.name; // $_POST["name"]
     //post the dough
     let dough = req.body.dough;
     //post the glaze
     let glaze = req.body.glaze;
     let donut = new Donut();
+    donut.username = username;
+    donut.email = email;
     donut.name = name;
     donut.dough = dough;
     donut.glaze = glaze;
@@ -48,6 +52,8 @@ const create = (req, res ) => {
                 let result = {
                     status: "success",
                     data: {
+                        donut: username,
+                        donut: email,
                         donut: name,
                         donut: dough,
                         donut: glaze
