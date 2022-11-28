@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const donutSchema = new Schema({
     username: String,
     email: String,
+    image: String,
     name: String,
     dough: String,
     glaze: String,
