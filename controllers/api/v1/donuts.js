@@ -29,6 +29,7 @@ const create = (req, res ) => {
     let username = req.body.username;
     let email = req.body.email;
     let image = req.body.image;
+    let sprinkles = req.body.sprinkles;
     let name = req.body.name; // $_POST["name"]
     //post the dough
     let dough = req.body.dough;
@@ -41,6 +42,8 @@ const create = (req, res ) => {
     donut.name = name;
     donut.dough = dough;
     donut.glaze = glaze;
+    donut.sprinkles = sprinkles;
+    donut.image = image;
     donut.save((err, donut) => {
         if(err) {
             console.log(err);
@@ -56,10 +59,11 @@ const create = (req, res ) => {
                     data: {
                         donut: username,
                         donut: email,
-                        donut: image,
                         donut: name,
                         donut: dough,
-                        donut: glaze
+                        donut: glaze,
+                        donut: sprinkles,
+                        donut: image,
                     },
                 };
                 res.json(result);
