@@ -1,6 +1,6 @@
 // add mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://m001-student:9587kmseja336@sandbox.z5noqyn.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 //mongodb://localhost:27017/
 //mongodb+srv://m001-student:9587kmseja336@sandbox.z5noqyn.mongodb.net/?retryWrites=true&w=majority
