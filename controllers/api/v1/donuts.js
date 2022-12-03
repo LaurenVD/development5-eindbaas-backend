@@ -26,24 +26,20 @@ const getAll = (req, res ) => {
 
 //create new donut
 const create = (req, res ) => {
-    let username = req.body.username;
+    let name = req.body.name; // $_POST["name"]
     let email = req.body.email;
+    let glaze = req.body.glaze;
     let image = req.body.image;
     let sprinkles = req.body.sprinkles;
-    let name = req.body.name; // $_POST["name"]
-    //post the dough
-    let dough = req.body.dough;
-    //post the glaze
-    let glaze = req.body.glaze;
+    let production = req.body.production;
     let donut = new Donut();
-    donut.username = username;
-    donut.email = email;
-    donut.image = image;
     donut.name = name;
-    donut.dough = dough;
+    donut.email = email;
     donut.glaze = glaze;
+    donut.image = image;
     donut.sprinkles = sprinkles;
     donut.image = image;
+    donut.production = production;
     donut.save((err, donut) => {
         if(err) {
             console.log(err);
@@ -57,13 +53,12 @@ const create = (req, res ) => {
                 let result = {
                     status: "success",
                     data: {
-                        donut: username,
-                        donut: email,
                         donut: name,
-                        donut: dough,
+                        donut: email,
                         donut: glaze,
                         donut: sprinkles,
                         donut: image,
+                        donut: status,
                     },
                 };
                 res.json(result);
@@ -120,7 +115,7 @@ const deleteId = (req, res) => {
 //update donut by id
 const updateId = (req, res) => {
     let id = req.params.id;
-    let status = req.body.status;
+    let production = req.body.production;
     Donut.findByIdAndUpdate
     (id, {status: status}, (err, donut) => {
         if(err) {
@@ -134,7 +129,7 @@ const updateId = (req, res) => {
             let result = {
                 status: 'success updating donut',
                 data: {
-                    donut: status,
+                    donut: production,
                 },
             };
             res.json(result);
