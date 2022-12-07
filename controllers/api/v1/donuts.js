@@ -58,7 +58,7 @@ const create = (req, res ) => {
                         donut: glaze,
                         donut: sprinkles,
                         donut: image,
-                        donut: status,
+                        donut: production,
                     },
                 };
                 res.json(result);
@@ -117,7 +117,7 @@ const updateId = (req, res) => {
     let id = req.params.id;
     let production = req.body.production;
     Donut.findByIdAndUpdate
-    (id, {status: status}, (err, donut) => {
+    (id, {production: production}, (err, donut) => {
         if(err) {
             let result = {
                 status: 'error',
@@ -129,7 +129,7 @@ const updateId = (req, res) => {
             let result = {
                 status: 'success updating donut',
                 data: {
-                    donut: production,
+                    donut: donut,
                 },
             };
             res.json(result);

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const donutSchema = new Schema({
-    email: String,
+    email: {type: String, required: true},
     sprinkles: String,
-    name: String,
+    name: {type: String, required: true},
     dough: String,
     glaze: String,
     image: String,
