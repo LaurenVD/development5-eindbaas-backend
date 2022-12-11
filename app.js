@@ -20,13 +20,7 @@ const apiV1DonutsRouter = require('./routes/api/v1/donuts');
 var app = express();
 
 // add cors
-app.use(cors({
-  //origin true
-  origin: true,
-  credentials: true,
-  //add methods
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}))
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
