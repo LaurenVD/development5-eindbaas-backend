@@ -31,6 +31,7 @@ const create = (req, res ) => {
     let glaze = req.body.glaze;
     let image = req.body.image;
     let sprinkles = req.body.sprinkles;
+    let amount = req.body.amount;
     let production = req.body.production;
     let donut = new Donut();
     donut.name = name;
@@ -39,6 +40,7 @@ const create = (req, res ) => {
     donut.image = image;
     donut.sprinkles = sprinkles;
     donut.image = image;
+    donut.amount = amount;
     donut.production = production;
     donut.save((err, donut) => {
         if(err) {
@@ -58,6 +60,7 @@ const create = (req, res ) => {
                         donut: glaze,
                         donut: sprinkles,
                         donut: image,
+                        donut: amount,
                         donut: production,
                     },
                 };
